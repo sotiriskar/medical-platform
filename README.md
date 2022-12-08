@@ -1,4 +1,5 @@
 # Medical Platform
+![qRaWh0ZhBMAkVevdOoDr](https://user-images.githubusercontent.com/36128807/206572788-1490a4af-cc4e-4097-9754-092f827b51f9.png)
 
 React.js platform that includes a dicom viewer and machine learning predictions for the dicom file
 

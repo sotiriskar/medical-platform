@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import './App.css';
+import '../Login/Login.css';
 import Login from "../Login/Login";
 
-function App() {
-  const [token, setToken] = useState();
+import Logout from "../Logout/Logout";
+import Dicom from '../Dicom/Dicom';
 
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
-
+const App = () => {
   return (
     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Dicom />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
     </BrowserRouter>
   )

@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function Login() {
+const Login = () => {
     useEffect(() => {
         const signUpButton = document.getElementById('signUp');
         const signInButton = document.getElementById('signIn');
@@ -15,10 +16,51 @@ function Login() {
         });
     }, []);
 
+    const [ email, setEmail ] = useState('')
+    const [ password, setPassword ] = useState('')
+    const [ firstName, setFirstName ] = useState('')
+    const [ lastName, setLastName ] = useState('')
+    
+    const SubmitLogin = e => {
+        e.preventDefault()
+        authUser({ email, password })
+        setEmail('')
+        setPassword('')
+    }
+
+    const authUser = async (user) => {
+        try {
+            const res = await axios.post('http://localhost:1000/login', user)
+            const { token } = res.data
+            localStorage.setItem('token', token)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const SubmitSignUp = e => {
+        e.preventDefault()
+        createUser({ firstName, lastName, email, password })
+        setFirstName('')
+        setLastName('')
+        setEmail('')
+        setPassword('')
+    }
+
+    const createUser = async (user) => {
+        try {
+            const res = await axios.post('http://localhost:1000/signup', user)
+            console.log('res:', res)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
     return (
         <div class="container" id="container">
             <div class="form-container sign-up-container">
-                <form action="#">
+                <form onSubmit={ SubmitSignUp }>
                     <h1>Create Account</h1>
                     <div class="social-container">
                         <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -26,14 +68,14 @@ function Login() {
                         <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <span>or use your email for registration</span>
-                    <input type="text" placeholder="Name" />
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <button>Sign Up</button>
+                    <input type="text" placeholder="Name" value={ firstName } onChange={ e => setFirstName(e.target.value) } required />
+                    <input type="email" placeholder="Email" value={ email } onChange={ e => setEmail(e.target.value) } required />
+                    <input type="password" placeholder="Password" value={ password } onChange={ e => setPassword(e.target.value) } required />
+                    <button type='submit'>Sign Up</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
-                <form action="#">
+                <form onSubmit={ SubmitLogin }>
                     <h1>Sign in</h1>
                     <div class="social-container">
                         <a href="#" class="social"><i class="fab fa-facebook"></i></a>
@@ -41,10 +83,10 @@ function Login() {
                         <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
                     </div>
                     <span>or use your account</span>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
+                    <input type="email" placeholder="Email" value={ email } onChange={ e => setEmail(e.target.value) } required />
+                    <input type="password" placeholder="Password" value={ password } onChange={ e => setPassword(e.target.value) } required />
                     <a href="#">Forgot your password?</a>
-                    <button>Sign In</button>
+                    <button type="submit">Sign In</button>
                 </form>
             </div>
             <div class="overlay-container">

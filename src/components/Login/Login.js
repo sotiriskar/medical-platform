@@ -63,9 +63,9 @@ const Login = () => {
                 <form onSubmit={ SubmitSignUp }>
                     <h1>Create Account</h1>
                     <div class="social-container">
-                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="" class="social"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <span>or use your email for registration</span>
                     <input type="text" placeholder="Name" value={ firstName } onChange={ e => setFirstName(e.target.value) } required />
@@ -78,14 +78,14 @@ const Login = () => {
                 <form onSubmit={ SubmitLogin }>
                     <h1>Sign in</h1>
                     <div class="social-container">
-                        <a href="#" class="social"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social"><i class="fab fa-google"></i></a>
-                        <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
+                        <a href="" class="social"><i class="fab fa-facebook"></i></a>
+                        <a href="" class="social"><i class="fab fa-google"></i></a>
+                        <a href="" class="social"><i class="fab fa-linkedin"></i></a>
                     </div>
                     <span>or use your account</span>
                     <input type="email" placeholder="Email" value={ email } onChange={ e => setEmail(e.target.value) } required />
                     <input type="password" placeholder="Password" value={ password } onChange={ e => setPassword(e.target.value) } required />
-                    <a href="#">Forgot your password?</a>
+                    <a href="">Forgot your password?</a>
                     <button type="submit">Sign In</button>
                 </form>
             </div>

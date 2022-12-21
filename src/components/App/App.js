@@ -5,13 +5,13 @@ import '../Login/Login.css';
 import Login from "../Login/Login";
 
 import Logout from "../Logout/Logout";
-import Dicom from '../Dicom/Dicom';
+import DicomViewer from '../Dicom/DicomViewer';
 
 const App = () => {
   return (
     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Dicom />} />
+          <Route path="/" element={<DicomViewer />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
         </Routes>
